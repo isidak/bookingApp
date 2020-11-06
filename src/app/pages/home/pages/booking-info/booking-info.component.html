@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1 class="m-auto">Booking info</h1>
+  </div>
+  <div class="row">
+    <div class="m-auto">
+      <form [formGroup]="baseForm">
+        <div>
+          <div formArrayName="bookingForm" class="form-group">
+            <div *ngFor="let name of baseFormArray.slice(0,2); let i=index">
+              <!-- The repeated alias template -->
+              <label for="{{i}}">
+                {{name}}:
+                <input type="text" class="form-control" [formControlName]="i" id="{{i}}" placeholder="Enter {{name}}" disabled>
+              </label>
+            </div>
+            <div *ngFor="let form of formArrays; let i=index;">
+              <div class="form-group">
+                <label for="{{i+2}}">{{baseFormArray[i + 2]}}</label>
+                <select class="form-control" id="{{i+2}}" [formControlName]="i+2">
+                  <option *ngFor="let option of form" value="{{option.value}}">{{option.title}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<app-booking-price></app-booking-price>

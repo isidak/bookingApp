@@ -1,0 +1,4 @@
+<nav class="navbar navbar-light bg-light">
+  <h3 class="navbar-brand">Price: {{priceValue$ | async | currency}}</h3>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="nextStep()" >{{nextButtonValue()}}</button>
+</nav>

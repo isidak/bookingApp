@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Booking</h2>
+  <div class="row">
+    <div class="col-sm-6 m-auto">
+      <div [formGroup]="baseForm">
+        <div formArrayName="bookingForm">
+          <div *ngFor="let name of baseFormArray; let i=index">
+            <!-- The repeated alias template -->
+            <label>
+                {{name}}:
+              <input type="text" [formControlName]="i" placeholder="Enter {{name}}">
+            </label>
+          </div>
+          <button (click)="navigate('bookinginfo')" class="btn btn-secondary">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <h2>Booking</h2>
+  <form [formGroup]="baseForm">
+    <div formArrayName="bookingForm">
+      <div class="row">
+        <div class="col" *ngFor="let name of baseFormArray; let i=index">
+          <input type="text" class="form-control" [formControlName]="i" placeholder="{{name}}">
+        </div>
+        <button (click)="navigate('bookinginfo')" class="btn btn-secondary">Next</button>
+      </div>
+    </div>
+  </form>
+</div>
