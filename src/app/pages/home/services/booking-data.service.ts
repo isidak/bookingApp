@@ -64,9 +64,6 @@ export class BookingDataService {
   constructor() {
   }
 
-  getFormFields() {
-    return of([this.baseForm]);
-  }
 
   setData(formValue) {
     this.formValues = formValue;
@@ -90,15 +87,15 @@ export class BookingDataService {
     return of([...this.frequencyArray]);
   }
 
-  getBookingSteps(){
+  getBookingSteps() {
     return of([...this.bookingSteps]);
   }
 
-  saveBooking(booking){
+  saveBooking(booking) {
     this.savedBookings.push(booking);
   }
 
-  resetForm(){
+  resetForm() {
     this.baseForm = new BookingForm();
     this.baseFormValues$.next({...this.baseForm});
   }

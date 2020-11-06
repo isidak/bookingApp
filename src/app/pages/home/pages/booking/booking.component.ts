@@ -15,28 +15,27 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
   formValue$ = new BehaviorSubject(null);
   private subscriptions = new Subscription();
   baseFormArray: string[];
-  constructor(private bookingDataService: BookingDataService) { }
+
+  constructor(private bookingDataService: BookingDataService) {
+  }
 
   ngOnInit(): void {
     this.getFormArray(2);
   }
 
   getFormArray(length): void {
-    const formArraySub = this.bookingDataService.getBaseFormArray().subscribe( (res) => {
+    const formArraySub = this.bookingDataService.getBaseFormArray().subscribe((res) => {
       this.baseFormArray = res.slice(0, length);
     });
     this.subscriptions.add(formArraySub);
   }
 
-  // getBaseFormFields(){
-  //   const formFieldsSub = this.bookingDataService.getFormFields().subscribe( res => this.baseFormArray = Object.keys(res[0]).slice(0, 2));
-  // }
   ngAfterViewInit(): void {
-   const formValueSub = this.bookingFormComponent.baseForm.valueChanges.subscribe( res => {
+    const formValueSub = this.bookingFormComponent.baseForm.valueChanges.subscribe(res => {
       this.formValue$.next(res);
       this.bookingDataService.setData(res);
     });
-   this.subscriptions.add(formValueSub);
+    this.subscriptions.add(formValueSub);
   }
 
   ngOnDestroy() {

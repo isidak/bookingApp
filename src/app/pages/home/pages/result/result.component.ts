@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit, OnDestroy {
+
   private subscriptions = new Subscription();
   bookingData: BookingForm;
   frequencyArray = [];

@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {BookingDataService} from './booking-data.service';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -10,7 +9,7 @@ export class BookingCostService {
 
   bookingCost$ = this.bookingCost.asObservable();
 
-  constructor(private bookingDataService: BookingDataService) {
+  constructor() {
   }
 
   setBookingCost(bookingValues) {

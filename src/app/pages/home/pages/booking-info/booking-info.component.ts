@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {BookingDataService} from '../../services/booking-data.service';
@@ -66,7 +66,6 @@ export class BookingInfoComponent extends BaseBookingFormComponent implements On
   addressStep() {
     this.baseFormArray.push('address');
     this.bookingForm.push(this.fb.control(''));
-
 
 
   }
