@@ -15,7 +15,7 @@ export class BookingInfoComponent extends BaseBookingFormComponent implements On
   pricePerHourArray: any[];
   frequencyArray: any[];
   formArrays = [];
-  private subscriptions = new Subscription();
+  protected subscriptions = new Subscription();
 
   constructor(public fb: FormBuilder,
               public router: Router,
@@ -30,6 +30,7 @@ export class BookingInfoComponent extends BaseBookingFormComponent implements On
     this.createForm();
     this.createFormControls();
     this.patchValues(this.bookingDataService.getFormData());
+    this.bookingDataService.setFormStatus(this.baseForm.status);
   }
 
   getFormArray(length): void {
@@ -60,7 +61,9 @@ export class BookingInfoComponent extends BaseBookingFormComponent implements On
     const formValueSub = this.baseForm.valueChanges.subscribe(res => {
       this.bookingDataService.setData(res);
     });
+    const formStatusSub = this.baseForm.statusChanges.subscribe( res => this.bookingDataService.setFormStatus(res));
     this.subscriptions.add(formValueSub);
+    this.subscriptions.add(formStatusSub);
   }
 
   addressStep() {

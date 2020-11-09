@@ -8,10 +8,10 @@
             <!-- The repeated alias template -->
             <label>
                 {{name}}:
-              <input type="text" [formControlName]="i" placeholder="Enter {{name}}">
+              <input type="text" [formControlName]="i" placeholder="Enter {{name}}" >
             </label>
           </div>
-          <button (click)="navigate('bookinginfo')" class="btn btn-secondary">Next</button>
+          <button (click)="navigate('bookinginfo')" class="btn btn-secondary" [disabled]="baseForm.invalid">Next</button>
         </div>
       </div>
     </div>

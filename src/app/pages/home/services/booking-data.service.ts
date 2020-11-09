@@ -59,6 +59,7 @@ export class BookingDataService {
     address: null,
   };
   baseFormValues$ = new BehaviorSubject({...this.baseForm});
+  baseFormStatus$ = new BehaviorSubject('INVALID');
   private savedBookings: BookingForm[] = [];
 
   constructor() {
@@ -69,6 +70,10 @@ export class BookingDataService {
     this.formValues = formValue;
     this.formValues.bookingForm.forEach((val, index) => this.baseForm[Object.keys(this.baseForm)[index]] = val);
     this.baseFormValues$.next({...this.baseForm});
+  }
+
+  setFormStatus(status){
+    this.baseFormStatus$.next(status);
   }
 
   getFormData() {

@@ -16,6 +16,7 @@ export class BookingPriceComponent implements OnInit, OnDestroy {
   priceValue$: Observable<number>;
   bookingSteps: string[];
   currentStep: string;
+  formStatusDisabled = true;
 
   constructor(private bookingDataService: BookingDataService,
               private bookingCostService: BookingCostService,
@@ -28,6 +29,7 @@ export class BookingPriceComponent implements OnInit, OnDestroy {
     this.getBookingData();
     this.getBookingCost();
     this.getBookingSteps();
+    this.getFormStatus();
   }
 
   getBookingData() {
@@ -52,12 +54,18 @@ export class BookingPriceComponent implements OnInit, OnDestroy {
     this.route.url.subscribe(res => this.currentStep = res[0].path);
   }
 
+  getFormStatus(){
+    const formStatusDisabledSub = this.bookingDataService.baseFormStatus$.subscribe( res => this.formStatusDisabled = res === 'INVALID');
+    this.subscriptions.add(formStatusDisabledSub);
+  }
+
   nextStep() {
     const currentStepIndex = this.bookingSteps.findIndex((val) => this.currentStep === val);
     const nextStep = this.bookingSteps[currentStepIndex + 1];
     if (this.nextButtonValue() === 'Save') {
       this.save.emit();
     } else {
+
       this.router.navigate(['home/' + nextStep]);
     }
   }

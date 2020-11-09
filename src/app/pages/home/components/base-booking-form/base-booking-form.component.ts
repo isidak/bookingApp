@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {BookingDataService} from '../../services/booking-data.service';
 
@@ -30,7 +30,7 @@ export class BaseBookingFormComponent implements OnInit {
 
   createFormControls() {
     this.baseFormArray.forEach((formControl) => {
-      this.bookingForm.push(this.fb.control(''));
+      this.bookingForm.push(this.fb.control('', Validators.required));
     });
   }
 
@@ -50,8 +50,10 @@ export class BaseBookingFormComponent implements OnInit {
   }
 
   navigate(id) {
-    this.bookingDataService.setData(this.baseForm.value);
-    this.router.navigate(['/home/' + id]);
+    // if (this.baseForm.valid) {
+      this.bookingDataService.setData(this.baseForm.value);
+      this.router.navigate(['/home/' + id]);
+    // }
   }
 
 }

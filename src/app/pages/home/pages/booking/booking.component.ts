@@ -15,12 +15,18 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
   formValue$ = new BehaviorSubject(null);
   private subscriptions = new Subscription();
   baseFormArray: string[];
+  disabledButton: boolean;
 
   constructor(private bookingDataService: BookingDataService) {
   }
 
   ngOnInit(): void {
     this.getFormArray(2);
+  }
+
+  disableButton(event){
+    this.disabledButton = event;
+    console.log(event);
   }
 
   getFormArray(length): void {

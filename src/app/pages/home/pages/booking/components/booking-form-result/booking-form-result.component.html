@@ -6,8 +6,9 @@
         <div class="col" *ngFor="let name of baseFormArray; let i=index">
           <input type="text" class="form-control" [formControlName]="i" placeholder="{{name}}">
         </div>
-        <button (click)="navigate('bookinginfo')" class="btn btn-secondary">Next</button>
+
       </div>
     </div>
   </form>
+  <button (click)="navigate('bookinginfo')" class="btn btn-secondary" [disabled]="disableButton">Next</button>
 </div>

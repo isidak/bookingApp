@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {BaseBookingFormComponent} from '../../../../components/base-booking-form/base-booking-form.component';
 import {Router} from '@angular/router';
@@ -10,6 +10,7 @@ import {BookingDataService} from '../../../../services/booking-data.service';
   styleUrls: ['./booking-form-result.component.css']
 })
 export class BookingFormResultComponent extends BaseBookingFormComponent implements OnInit {
+  @Input() disableButton: boolean;
 
   constructor(public fb: FormBuilder,
               public router: Router,
