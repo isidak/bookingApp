@@ -102,6 +102,7 @@ export class BookingDataService {
 
   resetForm() {
     this.baseForm = new BookingForm();
+    this.formValues = null;
     this.baseFormValues$.next({...this.baseForm});
   }
 

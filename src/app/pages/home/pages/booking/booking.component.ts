@@ -26,7 +26,6 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
 
   disableButton(event){
     this.disabledButton = event;
-    console.log(event);
   }
 
   getFormArray(length): void {
