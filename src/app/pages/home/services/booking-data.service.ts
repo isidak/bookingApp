@@ -51,14 +51,8 @@ export class BookingDataService {
       value: 0.4
     }];
   formValues: any;
-  baseForm: BookingForm = {
-    postCode: null,
-    m2: null,
-    frequency: null,
-    priceHour: null,
-    address: null,
-  };
-  baseFormValues$ = new BehaviorSubject({...this.baseForm});
+  baseForm = new BookingForm();
+  baseFormValues$ = new BehaviorSubject<BookingForm>(new BookingForm());
   baseFormStatus$ = new BehaviorSubject('INVALID');
   private savedBookings: BookingForm[] = [];
 

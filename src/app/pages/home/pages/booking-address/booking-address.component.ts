@@ -9,7 +9,7 @@ import {BookingDataService} from '../../services/booking-data.service';
   templateUrl: './booking-address.component.html',
   styleUrls: ['./booking-address.component.css']
 })
-export class BookingAddressComponent extends BookingInfoComponent implements OnInit, AfterViewInit, OnDestroy {
+export class BookingAddressComponent extends BookingInfoComponent implements OnInit {
 
   constructor(public fb: FormBuilder,
               public router: Router,
@@ -24,16 +24,6 @@ export class BookingAddressComponent extends BookingInfoComponent implements OnI
     this.patchValues(this.bookingDataService.getFormData());
     this.bookingDataService.setFormStatus(this.baseForm.status);
 
-  }
-
-
-
-  ngAfterViewInit() {
-    super.ngAfterViewInit();
-  }
-
-  ngOnDestroy() {
-    super.ngOnDestroy();
   }
 
 }

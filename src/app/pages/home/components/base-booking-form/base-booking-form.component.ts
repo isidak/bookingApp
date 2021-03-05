@@ -8,7 +8,7 @@ import {BookingDataService} from '../../services/booking-data.service';
   templateUrl: './base-booking-form.component.html',
   styleUrls: ['./base-booking-form.component.css']
 })
-export class BaseBookingFormComponent implements OnInit {
+export class BaseBookingFormComponent {
 
   @Input() baseFormArray: any[];
   baseForm: FormGroup;
@@ -19,8 +19,6 @@ export class BaseBookingFormComponent implements OnInit {
               public bookingDataService: BookingDataService) {
   }
 
-  ngOnInit(): void {
-  }
 
   createForm() {
     this.baseForm = this.fb.group({

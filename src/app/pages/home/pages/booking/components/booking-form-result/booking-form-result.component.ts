@@ -10,7 +10,7 @@ import {BookingDataService} from '../../../../services/booking-data.service';
   styleUrls: ['./booking-form-result.component.css']
 })
 export class BookingFormResultComponent extends BaseBookingFormComponent implements OnInit {
-  @Input() disableButton: boolean;
+  @Input() disableButton: boolean = true;
 
   constructor(public fb: FormBuilder,
               public router: Router,
